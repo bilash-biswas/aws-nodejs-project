@@ -1,16 +1,4 @@
 services:
-  db:
-    image: postgres:15
-    container_name: user-crud-db
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: bilashbi
-      POSTGRES_DB: user-crud
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
 
   backend:
     image: ${DOCKER_IMAGE_BACKEND:-backend_image_placeholder}
