@@ -1,5 +1,4 @@
 services:
-
   backend:
     image: ${DOCKER_IMAGE_BACKEND:-backend_image_placeholder}
     container_name: user-crud-backend
@@ -7,13 +6,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USERNAME: postgres
-      DB_PASSWORD: bilashbi
-      DB_DATABASE: user-crud
-    depends_on:
-      - db
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT:-5432}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
 
   frontend:
     image: ${DOCKER_IMAGE_FRONTEND:-frontend_image_placeholder}
@@ -21,8 +18,3 @@ services:
     restart: always
     ports:
       - "80:80"
-    depends_on:
-      - backend
-
-volumes:
-  postgres_data:
